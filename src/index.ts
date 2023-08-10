@@ -1,22 +1,13 @@
-import mongoose from "mongoose";
+import express from "express";
+import database from "./config/database";
+import { kittyRoute } from "./modules/kittens/kitty.route";
 
-async function main() {
-  await mongoose.connect("mongodb://localhost:27017/testdb", {
-    authSource: "admin",
-    user: "root",
-    pass: "example",
-  });
+const app = express();
+app.use(express.json());
+const port = 3000;
 
-  const kittySchema = new mongoose.Schema({
-    name: String,
-  });
+kittyRoute(app);
 
-  const Kitten = mongoose.model("Kitten", kittySchema);
-
-  const silence = new Kitten({ name: "Silence" });
-  console.log(silence.name); // 'Silence'
-
-  silence.save();
-}
-
-main();
+database.connect().then(() => {
+  app.listen(port, () => console.log(`API rodando na porta ${port}`));
+});
