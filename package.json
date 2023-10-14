@@ -4,7 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon"
+    "dev": "DB_LOCATION=localhost nodemon",
+    "start:prod": "DB_LOCATION=mongo node ./build/index.js",
+    "start:local": "DB_LOCATION=localhost node ./build/index.js",
+    "build": "tsc"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
