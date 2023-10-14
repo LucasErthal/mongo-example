@@ -13,8 +13,6 @@ services:
       - 27017:27017
     networks:
       - backend
-    links:
-      - application
 
   application:
     image: mongo-example-application
