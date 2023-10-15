@@ -3,7 +3,7 @@ version: "3.5"
 services:
   mongo:
     image: mongo:latest
-    container_name: mongotest
+    container_name: mongo-example-db
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
@@ -16,6 +16,7 @@ services:
 
   application:
     image: mongo-example-application
+    container_name: mongo-example-backend
     restart: always
     build:
       context: .
