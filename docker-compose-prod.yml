@@ -14,6 +14,18 @@ services:
     networks:
       - backend
 
+  application:
+    image: mongo-example-application
+    container_name: mongo-example-backend
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - backend
+
 networks:
   backend:
     driver: bridge
