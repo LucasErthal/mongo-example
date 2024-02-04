@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "DB_LOCATION=localhost nodemon",
+    "dev:docker": "DB_LOCATION=mongo nodemon",
     "start:prod": "DB_LOCATION=mongo node ./build/index.js",
     "start:local": "DB_LOCATION=localhost node ./build/index.js",
     "build": "tsc"
@@ -18,6 +19,7 @@
   },
   "dependencies": {
     "@apollo/server": "^4.9.3",
+    "@graphql-tools/schema": "^10.0.2",
     "graphql": "^16.8.0",
     "graphql-compose": "^9.0.10",
     "graphql-compose-mongoose": "^9.8.0",

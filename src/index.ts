@@ -1,10 +1,10 @@
-import database from "./config/database";
-import _graphqlSchema from "./modules/kittens/kitty.model";
-import { ApolloServer } from "@apollo/server";
-import { startStandaloneServer } from "@apollo/server/standalone";
+import database from './config/database';
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
+import { schemas } from './modules';
 
 async function start() {
-  const server = new ApolloServer({ schema: _graphqlSchema });
+  const server = new ApolloServer({ schema: schemas });
 
   await database.connect();
 
