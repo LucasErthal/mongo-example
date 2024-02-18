@@ -1,9 +1,11 @@
-version: "3.5"
+version: '3.5'
 
 services:
   mongo:
     image: mongo:latest
     container_name: mongo-example-db
+    volumes:
+      - ~/mongo/data:/data/db
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
