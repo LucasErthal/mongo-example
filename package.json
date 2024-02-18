@@ -5,7 +5,6 @@
   "license": "MIT",
   "scripts": {
     "dev": "DB_LOCATION=localhost nodemon",
-    "dev:docker": "DB_LOCATION=mongo nodemon",
     "start:prod": "DB_LOCATION=mongo node ./build/index.js",
     "start:local": "DB_LOCATION=localhost node ./build/index.js",
     "build": "tsc"
