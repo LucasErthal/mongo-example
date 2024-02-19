@@ -1,5 +1,6 @@
 import { schemaComposer } from 'graphql-compose';
-import { UserModel, UserTC } from './user.model';
+import { UserModel } from './user.model';
+import { UserTC } from '../../graphql/types';
 
 const output = schemaComposer.createObjectTC({
   name: 'v1ListUsersOutput',

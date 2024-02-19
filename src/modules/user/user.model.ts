@@ -1,5 +1,4 @@
 import Mongoose from 'mongoose';
-import { composeWithMongoose } from 'graphql-compose-mongoose';
 
 const UserSchema = new Mongoose.Schema({
   name: String,
@@ -7,5 +6,3 @@ const UserSchema = new Mongoose.Schema({
 });
 
 export const UserModel = Mongoose.model('User', UserSchema);
-
-export const UserTC = composeWithMongoose(UserModel);
