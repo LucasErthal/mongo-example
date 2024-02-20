@@ -1,5 +1,6 @@
 import { schemaComposer } from 'graphql-compose';
 import { UserModel } from './user.model';
+import { UserTC } from '@graphql/types';
 
 const input = {
   name: 'String!',
@@ -9,9 +10,7 @@ const input = {
 const output = schemaComposer.createObjectTC({
   name: 'v1CreateUserOutput',
   fields: {
-    _id: 'String',
-    name: 'String',
-    email: 'String',
+    user: UserTC,
   },
 });
 

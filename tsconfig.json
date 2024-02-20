@@ -7,7 +7,8 @@
     "baseUrl": ".",
     "paths": {
       "@src/*": ["src/*"],
-      "@modules/*": ["src/modules/*"]
+      "@modules/*": ["src/modules/*"],
+      "@graphql/*": ["src/graphql/*"]
     },
     "resolveJsonModule": true,
 
