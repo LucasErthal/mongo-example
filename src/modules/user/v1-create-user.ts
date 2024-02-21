@@ -24,6 +24,6 @@ export const v1CreateUser = schemaComposer.createResolver({
 
     const user = await UserModel.create(args);
 
-    return user;
+    return { user };
   },
 });

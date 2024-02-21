@@ -19,8 +19,10 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitAny": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "types": ["@types/jest"]
   },
+  "include": ["src/**/*"],
   "ts-node": {
     "require": ["tsconfig-paths/register"]
   }
