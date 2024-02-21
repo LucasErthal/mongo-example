@@ -1,11 +1,9 @@
-version: '3.5'
+version: "3.5"
 
 services:
   mongo:
     image: mongo:latest
     container_name: mongo-example-db
-    volumes:
-      - ~/mongo/data:/data/db
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
@@ -13,6 +11,18 @@ services:
       MONGO_INITDB_DATABASE: testdb
     ports:
       - 27017:27017
+    networks:
+      - backend
+
+  application:
+    image: mongo-example-application
+    container_name: mongo-example-backend
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
     networks:
       - backend
 

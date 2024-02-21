@@ -9,7 +9,7 @@ mongoose.connection.on("error", () => {
 });
 
 async function connect() {
-  await mongoose.connect("mongodb://localhost:27017/testdb", {
+  await mongoose.connect(`mongodb://${process.env.DB_LOCATION}:27017/testdb`, {
     authSource: "admin",
     user: "root",
     pass: "example",

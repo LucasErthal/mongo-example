@@ -1,13 +1,18 @@
-import express from "express";
-import database from "./config/database";
-import { kittyRoute } from "./modules/kittens/kitty.route";
+import database from './config/database';
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
+import { schemas } from './modules';
 
-const app = express();
-app.use(express.json());
-const port = 3000;
+async function start() {
+  const server = new ApolloServer({ schema: schemas });
 
-kittyRoute(app);
+  await database.connect();
 
-database.connect().then(() => {
-  app.listen(port, () => console.log(`API rodando na porta ${port}`));
-});
+  const { url } = await startStandaloneServer(server, {
+    listen: { port: 3000 },
+  });
+
+  console.log(`App running on url ${url}`);
+}
+
+start();
