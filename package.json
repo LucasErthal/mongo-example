@@ -7,7 +7,7 @@
     "dev": "DB_LOCATION=localhost nodemon",
     "start:prod": "DB_LOCATION=mongo node ./build/index.js",
     "start:local": "DB_LOCATION=localhost node ./build/index.js",
-    "build": "tsc"
+    "build": "tsc && tsc-alias"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
@@ -23,6 +23,7 @@
     "graphql-compose": "^9.0.10",
     "graphql-compose-mongoose": "^9.8.0",
     "mongoose": "^7.5.2",
+    "tsc-alias": "^1.8.8",
     "tsconfig-paths": "^4.2.0"
   }
 }
