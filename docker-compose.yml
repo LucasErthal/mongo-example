@@ -19,3 +19,7 @@ services:
 networks:
   backend:
     driver: bridge
+
+volumes:
+  mongo-data:
+    name: mongo-example-volume

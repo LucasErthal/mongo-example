@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon",
     "start": "node ./build/index.js",
+    "test": "yarn jest --runInBand --detectOpenHandles --coverage --watch",
     "build": "tsc && tsc-alias"
   },
   "devDependencies": {
