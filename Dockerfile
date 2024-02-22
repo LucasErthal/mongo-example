@@ -1,5 +1,7 @@
 FROM node:latest
 
+ENV DB_LOCATION=mongo
+
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
@@ -14,4 +16,4 @@ RUN yarn build
 
 EXPOSE 3000
 
-CMD ["yarn", "start:prod"]
+CMD ["yarn", "start"]
