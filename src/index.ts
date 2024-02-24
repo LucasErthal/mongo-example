@@ -1,3 +1,3 @@
-import { start } from './config/apolloServer';
+import { server } from './config/apolloServer';
 
-start();
+server.start();

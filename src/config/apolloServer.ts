@@ -1,18 +1,25 @@
 require('dotenv').config();
-import database from './database';
+import { database } from './database';
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 import { schemas } from '@modules/index';
 
-export async function start() {
-  const server = new ApolloServer({ schema: schemas });
-  await database.connect();
+const instance = new ApolloServer({ schema: schemas });
 
-  const { url } = await startStandaloneServer(server, {
-    listen: { port: 3000 },
-  });
+export const server = {
+  instance,
+  async start() {
+    await database.connect();
 
-  console.log(`App running on url ${url}`);
+    const { url } = await startStandaloneServer(instance, {
+      listen: { port: 3000 },
+    });
 
-  return server;
-}
+    console.log(`App running on url ${url}`);
+  },
+
+  async stop() {
+    await instance.stop();
+    await database.disconnect();
+  },
+};
