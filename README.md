@@ -1,6 +1,6 @@
 # Mongo project for tests
 
-This project is my first try creating an backend using MongoDB + GraphQL, I will add random things that I'm studying and/or think its interesting
+This project is my first try creating a backend using MongoDB + GraphQL, I will add random things that I'm studying and/or think its interesting
 
 ## How run it
 The project runs using docker, so if you don't have docker installed, look on the <a href="https://docs.docker.com/desktop/" target="_blank">official documentation</a> to install it.
