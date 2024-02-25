@@ -96,6 +96,32 @@ describe('Given the user workflow and user data', () => {
         expect(user._id).toBeTruthy();
       });
     });
+
+    describe('And the user not exists', () => {
+      test('Then should return "User not exists" message', async () => {
+        const response = (await server.instance.executeOperation({
+          query: `mutation Mutation( $id: String! $name: String, $email: String) {
+  v1UpdateUser(_id: $id, name: $name, email: $email) {
+    user {
+      _id
+      email
+      name
+    }
+  }
+}`,
+          variables: {
+            ...userInput,
+            //fake id
+            id: '65daaffbfb820bdece820448',
+          },
+        })) as SingleGraphQLResponse<UpdateUserResponse>;
+
+        const errors = response?.body?.singleResult?.errors;
+        const errorMessage = errors ? errors[0].message : '';
+
+        expect(errorMessage).toEqual('User not exists');
+      });
+    });
   });
 
   describe('When users are listed', () => {
@@ -138,6 +164,28 @@ describe('Given the user workflow and user data', () => {
         const user = response.body.singleResult.data.v1DeleteUser.user;
 
         expect(user._id).toBeTruthy();
+      });
+    });
+
+    describe('And the user not exists', () => {
+      test('Then should return "User not exists" message', async () => {
+        const response = (await server.instance.executeOperation({
+          query: `mutation V1DeleteUser($id: String!) {
+  v1DeleteUser(_id: $id) {
+    user {
+      _id
+      email
+      name
+    }
+  }
+}`,
+          variables: { id: '65daaffbfb820bdece820448' },
+        })) as SingleGraphQLResponse<DeleteUserResponse>;
+
+        const errors = response?.body?.singleResult?.errors;
+        const errorMessage = errors ? errors[0].message : '';
+
+        expect(errorMessage).toEqual('User not exists');
       });
     });
   });
