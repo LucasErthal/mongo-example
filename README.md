@@ -5,6 +5,8 @@ This project is my first try creating a backend using MongoDB + GraphQL, I will 
 ## How run it
 The project runs using docker, so if you don't have docker installed, look on the <a href="https://docs.docker.com/desktop/" target="_blank">official documentation</a> to install it.
 
+You'll need create a .env file, just copy .env.example content to it.
+
 ### Development mode:
 1. Run docker compose -d && yarn dev
 2. If everything is ok, this message should appear:
