@@ -5,6 +5,8 @@ services:
     image: mongo:latest
     container_name: mongo-example-db
     restart: always
+    volumes:
+      - ~/mongo-data:/data/db
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example

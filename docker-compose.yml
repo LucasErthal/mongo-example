@@ -5,7 +5,7 @@ services:
     image: mongo:latest
     container_name: mongo-example-db
     volumes:
-      - ~/mongo/data:/data/db
+      - ./volume:/data/db
     restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
@@ -15,6 +15,7 @@ services:
       - 27017:27017
     networks:
       - backend
+    command: chmod -R 777 /data/db && mongod
 
 networks:
   backend:
